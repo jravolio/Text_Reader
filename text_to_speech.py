@@ -26,18 +26,20 @@ while True:
     if event == 'Exit' or event == sg.WIN_CLOSED:
         break
     
-    if event == 'ler_arquivo':
-        filepath = values['-FILE-']
-        nome_arquivo = os.path.basename(filepath)
-        window['arquivo_selecionado'].update(f'Lendo arquivo: {nome_arquivo}')
-        with open(filepath) as text:
-            mytext = text.read()
-            myobj = gTTS(text=mytext, lang=language, slow=False)
-            filename= 'versao2.mp3'
-            myobj.save(filename)
-            playsound(filename)
-            os.remove(filename)
-
+    try:
+        if event == 'ler_arquivo':
+            filepath = values['-FILE-']
+            nome_arquivo = os.path.basename(filepath)
+            window['arquivo_selecionado'].update(f'Lendo arquivo: {nome_arquivo}')
+            with open(filepath) as text:
+                mytext = text.read()
+                myobj = gTTS(text=mytext, lang=language, slow=False)
+                filename= 'versao2.mp3'
+                myobj.save(filename)
+                playsound(filename)
+                os.remove(filename)
+    except:
+        window['arquivo_selecionado'].update('Por favor selecione um arquivo!',text_color = 'red')
     
 
 
