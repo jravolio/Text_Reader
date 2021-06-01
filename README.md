@@ -1,2 +1,2 @@
-# Leitor_de_texto
+# Leitor de texto
 Project created to read texts for you
