@@ -6,7 +6,6 @@ from playsound import playsound
 import docx2txt
 
 #engine audio
-language = 'pt-br'
 
 def speak(text):
     tts = gTTS(text = text, lang = 'pt-br', slow= False)
