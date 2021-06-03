@@ -1,9 +1,11 @@
-from typing import Sized
-import PySimpleGUI as sg
-import os
-from gtts import gTTS, lang
-from playsound import playsound
-import docx2txt
+import PySimpleGUI as sg #biblioteca gráfica
+import os #sistema
+from gtts import gTTS, lang #Ler arquivos
+from playsound import playsound #Musica
+import docx2txt #para arquivos docx
+import PyPDF2 #para pdf
+
+
 
 #engine audio
 
@@ -35,7 +37,7 @@ while True:
     if event == 'ler_arquivo':
         filepath = values['-FILE-']
         nome_arquivo = os.path.basename(filepath)
-        window['arquivo_selecionado'].update(f'Lendo arquivo: {nome_arquivo}', text_color = 'black')
+        window['arquivo_selecionado'].update(f'Arquivo lido: {nome_arquivo}', text_color = 'black')
 
         if filepath == '':
             window['arquivo_selecionado'].update('Por favor selecione um arquivo!',text_color = 'red')
@@ -44,9 +46,24 @@ while True:
             with open(filepath) as text_to_read:
                 txt = text_to_read.read()
                 speak(txt)
-        if nome_arquivo.split(".")[-1] == 'docx':
+        elif nome_arquivo.split(".")[-1] == 'docx':
             docx_text = docx2txt.process(filepath)
             speak(docx_text)
+        elif nome_arquivo.split(".")[-1] == 'pdf':
+            # creating a pdf file object 
+            pdfFileObj = open(filepath, 'rb') 
+            # creating a pdf reader object 
+            pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
+                
+            # creating a page object 
+            pageObj = pdfReader.getPage(0) 
+                
+            # extracting text from page 
+            pdf_text = pageObj.extractText() 
+                
+            # closing the pdf file object 
+            speak(pdf_text)
+            pdfFileObj.close() 
 
     else:
         window['arquivo_selecionado'].update('Por favor selecione um arquivo de texto!',text_color = 'red')
