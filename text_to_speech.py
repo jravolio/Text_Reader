@@ -1,15 +1,22 @@
 from typing import Sized
 import PySimpleGUI as sg
 import os
-from gtts import gTTS
+from gtts import gTTS, lang
 from playsound import playsound
+import docx2txt
 
 #engine audio
 language = 'pt-br'
 
+def speak(text):
+    tts = gTTS(text = text, lang = 'pt-br', slow= False)
+    filename = 'audio.mp3'
+    tts.save(filename)
+    playsound(filename)
+    os.remove(filename)
 
 #tipos de dados
-file_types = [("Texto (*.txt)", "*.txt")]
+file_types = [("Todos arquivos", "*.*")]
 
 #layout and pysimplegui stuff
 sg.theme('Reddit')
@@ -25,22 +32,24 @@ while True:
 
     if event == 'Exit' or event == sg.WIN_CLOSED:
         break
-    
-    try:
-        if event == 'ler_arquivo':
-            filepath = values['-FILE-']
-            nome_arquivo = os.path.basename(filepath)
-            window['arquivo_selecionado'].update(f'Lendo arquivo: {nome_arquivo}')
-            with open(filepath) as text:
-                mytext = text.read()
-                myobj = gTTS(text=mytext, lang=language, slow=False)
-                filename= 'versao2.mp3'
-                myobj.save(filename)
-                playsound(filename)
-                os.remove(filename)
-    except:
-        window['arquivo_selecionado'].update('Por favor selecione um arquivo!',text_color = 'red')
-    
 
+    if event == 'ler_arquivo':
+        filepath = values['-FILE-']
+        nome_arquivo = os.path.basename(filepath)
+        window['arquivo_selecionado'].update(f'Lendo arquivo: {nome_arquivo}', text_color = 'black')
+
+        if filepath == '':
+            window['arquivo_selecionado'].update('Por favor selecione um arquivo!',text_color = 'red')
+
+        if nome_arquivo.split(".")[-1] == 'txt':
+            with open(filepath) as text_to_read:
+                txt = text_to_read.read()
+                speak(txt)
+        if nome_arquivo.split(".")[-1] == 'docx':
+            docx_text = docx2txt.process(filepath)
+            speak(docx_text)
+
+    else:
+        window['arquivo_selecionado'].update('Por favor selecione um arquivo de texto!',text_color = 'red')
 
 window.close()
