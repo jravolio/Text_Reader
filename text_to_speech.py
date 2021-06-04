@@ -6,6 +6,7 @@ import PySimpleGUI as sg
 from funcoes import speak, get_audio, janela_inicial, janela_speech_recognition
 from docx import Document
 
+
 #janelas iniciais
 janela1, janela2 = janela_inicial(), None
 
