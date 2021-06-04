@@ -3,7 +3,7 @@ from playsound import playsound #Musica
 import speech_recognition as sr #speech recognition
 import os #sistema
 import PySimpleGUI as sg #biblioteca gráfica
-import darkdetect
+import darkdetect #detectar modo escuro
 
 
 def speak(text):
