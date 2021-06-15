@@ -8,8 +8,12 @@ Suas definições e para o que estão sendo utilizadas estão em forma de coment
 
 ## Funcionalidades para implementação
 
-adicionar leitura de arquivos word <span style="color:blue">*FEITO*</span>  
-adicionar leitura de arquivos pdf <span style="color:blue">*FEITO*</span>  
-adicionar recurso para escrever por comando de voz <span style="color:blue">*FEITO*</span>  
-Temas dinamicos <span style="color:blue">*FEITO*</span>  
-Usuário escolher o local de salvar <span style="color:red">*A FAZER*</span>  
+```diff
+
++ adicionar leitura de arquivos word FEITO  
++ adicionar recurso para escrever por comando de voz FEITO
++ Temas dinamicos FEITO  
++ adicionar leitura de arquivos pdf FEITO  
+
+- Usuário escolher o local de salvar A FAZER  
+```
