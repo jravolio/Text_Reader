@@ -1,19 +1,32 @@
-# Leitor de texto
-## Propósito
-Projeto criado com o objetivo de ler arquivos variados que o usuário selecione, ele também permite que o usuário digite textos a partir da voz.
 
-## Tecnologias utilizadas
-Nesse projeto foram utilizadas diversas bibliotecas diferentes, tais como: **docx2txt, PyPDF2, PySimpleGUI, docx, darkdetect, speech_recognition, playsound, os e gtts.**
-Suas definições e para o que estão sendo utilizadas estão em forma de comentário em cada código.
+<div align="center">
+<img width='150' src="./readmeImg/logo.png"/>
+</div>
+<div align="center">
 
-## Funcionalidades para implementação
+<p>    </p>
+<img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=white"/>
+</div>
 
-```diff
 
-+ adicionar leitura de arquivos word FEITO  
-+ adicionar recurso para escrever por comando de voz FEITO
-+ Temas dinamicos FEITO  
-+ adicionar leitura de arquivos pdf FEITO  
 
-- Usuário escolher o local de salvar A FAZER  
+## -  Objective 🛠️
+This project was created for help people that wanted an text to speech technologie for reading books or texts. It can also understand what you say and create a file from this.
+
+
+
+## - Technologies 🚀️
+On this project i used **docx2txt, PyPDF2, PySimpleGUI, docx, darkdetect, speech_recognition, playsound, os and gtts.**.
+
+<img align='right' width="230" height="" src="./readmeImg/example.png" />
+
+## - How to setup ⛳
+First clone this project using:
 ```
+git clone https://github.com/jravolio/Fake-data-generator
+```
+After that open you terminal on the project folder and run:
+```
+pip install -r requirements.txt
+```
+After that just execute the python file and everything shoud be functioning! :)
